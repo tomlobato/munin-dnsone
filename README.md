@@ -24,6 +24,9 @@ hit	8
 ```
 
 # Install
+
+As root, run:
+
 ```
 wget https://raw.githubusercontent.com/tomlobato/munin-dnsone/master/dnsone_munin_
 chmod 755 dnsone_munin_
