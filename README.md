@@ -10,7 +10,7 @@ Having [dns_one](https://github.com/tomlobato/dns_one) installed and working, ru
 dns_one stats
 ```
 
-You shound get something link this:
+You should get an output like:
 ```
 --- rcode ---
 no_error	10
