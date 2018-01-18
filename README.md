@@ -60,20 +60,17 @@ graph_category DnsOne
 graph_title cache
 graph_vlabel %
 graph_args --base 1000 -l 0
-
 hit.label hit
 miss.label miss
 
-
 hit.value 95.2
 miss.value 4.8
-root@ns1:/etc/munin/plugins# 
-root@ns1:/etc/munin/plugins# munin-run dnsone_rcode config
+
+
 graph_category DnsOne
 graph_title rcode
 graph_vlabel %
 graph_args --base 1000 -l 0
-
 badalg.label badalg
 badkey.label badkey
 badmode.label badmode
@@ -92,7 +89,6 @@ refused.label refused
 serv_fail.label serv_fail
 yx_domain.label yx_domain
 yxrr_set.label yxrr_set
-
 
 badalg.value 0.0
 badkey.value 0.0
@@ -118,7 +114,6 @@ graph_category DnsOne
 graph_title req_resource
 graph_vlabel %
 graph_args --base 1000 -l 0
-
 a.label a
 aaaa.label aaaa
 any.label any
@@ -145,11 +140,11 @@ soa.value 4.577968526466381
 txt.value 4.86409155937053
 wks.value 0.0
 
+
 graph_category DnsOne
 graph_title requests
 graph_vlabel requests / second
 graph_args --base 1000 -l 0
-
 requests.label requests
 
 requests.value 1.8366666666666667
