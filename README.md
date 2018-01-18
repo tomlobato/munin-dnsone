@@ -4,7 +4,7 @@
 gem install msgpack
 ```
 
-# Check your [DnsOne](https://github.com/tomlobato/dns_one) instalation
+# Check your [dns_one](https://github.com/tomlobato/dns_one) instalation
 
 Run the folowing command to verify if dns_one is exporting its stats properly:
 
