@@ -10,7 +10,8 @@ Having [dns_one](https://github.com/tomlobato/dns_one) installed and working, ru
 dns_one stats
 ```
 
-You should get an output like:
+If you ge a an output like this you are ready to run munin-dnsone:
+
 ```
 --- rcode ---
 no_error	10
