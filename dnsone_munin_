@@ -1,7 +1,9 @@
 #!/root/.rbenv/shims/ruby
 
-require 'msgpack'
 require 'ostruct'
+require 'msgpack'
+
+MessagePack::DefaultFactory.register_type(0x00, Symbol)
 
 class MuninDnsOne
 
@@ -120,7 +122,7 @@ CONFIG
     end
 
     def get_stats
-        if false and File.exists?(CACHE_FILE) and
+        if File.exists?(CACHE_FILE) and
             (Time.now - File.stat(CACHE_FILE).ctime) < CACHE_EXPIRE
             MessagePack.unpack File.open(CACHE_FILE, 'rb').read
          else
