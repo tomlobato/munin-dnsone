@@ -12,7 +12,7 @@ class MuninDnsOne
         rcode: {
             percent: true,
             vlabel: '%',
-                fields: %w(not_imp refused yx_domain yxrr_set nxrr_set not_auth not_zone badvers no_error badsig badkey badtime badmode nx_domain badalg badname form_err serv_fail).sort
+                fields: %w(badalg badkey badmode badname badsig badtime badvers form_err no_error not_auth not_imp not_zone nx_domain nxrr_set refused serv_fail yx_domain yxrr_set)
         },
         req_resource: {
             percent: true,
