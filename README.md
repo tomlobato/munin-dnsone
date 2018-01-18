@@ -52,7 +52,8 @@ munin-run dnsone_requests config
 munin-run dnsone_requests
 ```
 
-If you get an output like this, you are ready to go, just restart munon-node:
+If you get an output like this, you are ready to go, just restart munin-node with ```/etc/init.d/munin-node restart```
+:
 
 ```
 graph_category DnsOne
@@ -153,11 +154,6 @@ requests.label requests
 
 requests.value 1.8366666666666667
 
-```
-
-
-```
-/etc/init.d/munin-node restart
 ```
 
 
