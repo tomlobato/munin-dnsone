@@ -4,13 +4,13 @@
 gem install msgpack
 ```
 
-Having [dns_one](https://github.com/tomlobato/dns_one) installed and working, run this to make sure it is generating stats:
+Having [dns_one](https://github.com/tomlobato/dns_one) installed and working, run the folowing command to make sure it is generating the stats properly:
 
 ```
 dns_one stats
 ```
 
-If you ge a an output like this you are ready to run munin-dnsone:
+If you get an output like this you are ready to run munin-dnsone:
 
 ```
 --- rcode ---
