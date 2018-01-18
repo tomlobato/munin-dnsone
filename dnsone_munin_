@@ -35,7 +35,7 @@ class MuninDnsOne
             },
         },
         requests: {
-            vlabel: 'requests / second',
+            vlabel: 'request / second',
             fields: {
                 requests: 'Dns request rate (req/sec)',
             },
