@@ -35,9 +35,9 @@ class MuninDnsOne
             },
         },
         requests: {
-            vlabel: 'count',
+            vlabel: 'requests / second',
             fields: {
-                requests: 'requests',
+                requests: 'Dns request rate (req/sec)',
             },
         }
     }
@@ -153,7 +153,7 @@ CONFIG
         end
 
         stat["requests"] = {
-            requests: stat["cache"].values.reduce(:+).to_i
+            requests: (stat["cache"].values.reduce(:+).to_f / 300.0)
         }
 
         stat
