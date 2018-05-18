@@ -2,6 +2,7 @@
 
 require 'ostruct'
 require 'msgpack'
+require 'json'
 
 MessagePack::DefaultFactory.register_type(0x00, Symbol)
 
@@ -9,6 +10,7 @@ class MuninDnsOne
 
     CACHE_FILE = '/tmp/dns_one_cache'
     CACHE_EXPIRE = 30
+    DEFAULT_LOG_RESULT_SOCKET_FILE = '/tmp/dns_one_log_result.sock'
 
     GRAPHS = {
         rcode: {
@@ -66,7 +68,7 @@ class MuninDnsOne
         else
             _fields = {}            
             graph[:fields].each do |field|
-                _fields[field.to_sym] = field
+                _fields[field] = field
             end
             _fields
         end
@@ -122,11 +124,11 @@ CONFIG
     end
 
     def get_stats
-        if File.exists?(CACHE_FILE) and
+        if false and File.exists?(CACHE_FILE) and
             (Time.now - File.stat(CACHE_FILE).ctime) < CACHE_EXPIRE
             MessagePack.unpack File.open(CACHE_FILE, 'rb').read
          else
-            stat = fetch_stats
+            stat = fetch_stats_socket
             File.open(CACHE_FILE, 'wb', 0600).write MessagePack.pack(stat)
             stat
         end
@@ -140,7 +142,7 @@ CONFIG
             if l =~ /---\s*(\S+)\s*---/
                 section = $1
             elsif l =~ /^(.*?)\s+(.*)$/
-                key = $1.to_sym
+                key = $1
                 val = $2.strip.to_f
                 stat[section] ||= {}
                 stat[section][key] = val
@@ -150,6 +152,30 @@ CONFIG
         stat["requests"] = {
             requests: (stat["cache"].values.reduce(:+).to_f / 300.0)
         }
+
+        stat
+    end
+
+    def fetch_stats_socket
+        require 'socket'
+
+        stats_json = UNIXSocket.open(DEFAULT_LOG_RESULT_SOCKET_FILE) do |sock|
+            JSON.parse sock.readline.chomp
+        end
+
+        stat = {}
+
+        stat["requests"] = {
+            requests: stats_json['requests']
+        }
+
+        stat["cache"] = {
+            hit: stats_json['cache'],
+            miss: (stats_json['requests'] - stats_json['cache'])
+        }
+
+        stat['rcode'] = stats_json['rcode']
+        stat['req_resource'] = stats_json['req_resource']
 
         stat
     end
