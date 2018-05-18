@@ -4,27 +4,6 @@
 gem install msgpack
 ```
 
-# Check your [dns_one](https://github.com/tomlobato/dns_one) instalation
-
-Run the folowing command to verify if dns_one is exporting its stats properly:
-
-```
-dns_one stats
-```
-
-If you get an output like this you are ready to install munin-dnsone:
-
-```
---- rcode ---
-no_error	10
-nx_domain	2
---- req_resource ---
-a	12
---- cache ---
-miss	4
-hit	8
-```
-
 # Install
 
 As root, run:
