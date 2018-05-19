@@ -1,6 +1,15 @@
 #!/root/.rbenv/shims/ruby
 
-# https://kudithipudi.org/2004/03/18/rrdtool-how-to-remove-spikes/
+# rrdtool how to remove spikes
+# From https://kudithipudi.org/2004/03/18/rrdtool-how-to-remove-spikes/ 
+
+# file=ns1.casare-dnsone_requests-requests-g.rrd
+# cp $file ~/2
+# rrdtool tune $file -a 42:10
+# rrdtool dump $file > ~/3
+# mv $file ~/4
+# rrdtool restore ~/3 $file -r
+
 
 require 'ostruct'
 require 'msgpack'
