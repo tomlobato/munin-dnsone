@@ -1,5 +1,7 @@
 #!/root/.rbenv/shims/ruby
 
+# https://kudithipudi.org/2004/03/18/rrdtool-how-to-remove-spikes/
+
 require 'ostruct'
 require 'msgpack'
 require 'json'
