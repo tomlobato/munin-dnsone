@@ -166,7 +166,7 @@ CONFIG
         stat = {}
 
         stat["requests"] = {
-            requests: stats_json['requests']
+            requests: stats_json['requests'] / 300.0
         }
 
         stat["cache"] = {
